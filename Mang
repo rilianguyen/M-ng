@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIZE 100
+
+void NhapN(int &n)
+{
+	printf("Nhap so luong phan tu: "); 
+	scanf("%d", &n);
+	}
+
+void NhapMang(int a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		//printf("Nhap vao phan tu thu %d: ", i); //Nhap tay tung phan tu
+		//scanf("%d", &a[i]);
+		a[i] = rand() % 20 + 1; //Random phan tu trong mang. Khi xai can inlucde thu vien stdlib va time, them lenh srand o void main
+	}
+}
+
+void XuatMang(int a[], int n)
+{
+	printf("Phan tu cua mang: \n"); //Lam mau cho de nhin thoi :v
+	for (int i = 0; i < n; i++)
+		printf("%d\n", a[i]);
+}
+
+void ThemCuoi(int a[], int &n, int x) //x la so thuc ma nguoi dung muon them
+{
+	a[n] = x;
+	n++; //Sau khi them thi tao them 1 o nho de chua gia tri
+}
+
+void ThemDau(int a[], int &n, int y)
+{
+	for (int i = n; i > 0 ; i--)
+		a[i] = a[i - 1];
+	a[0] = y;
+	n++;
+}
+
+void ThemBatKy(int a[], int &n, int z, int t)
+{
+	for (int i = n; i > z; i--)
+		a[i] = a[i - 1];
+	a[z] = t;
+	n++;
+}
+
+void XoaCuoi(int a[], int &n)
+{
+	n--;
+}
+
+void XoaDau(int a[], int &n)
+{
+	for (int i = 0; i < n; i++)
+		a[i] = a[i + 1];
+	n--;
+}
+
+void XoaBatKy(int a[], int &n, int b)
+{
+	for (int i = b; i < n; i++)
+		a[i] = a[i + 1];
+	n--;
+}
+
+void main()
+{
+	int a[SIZE];
+	int n = 0;
+	srand((unsigned)time(NULL)); //Dung cau lenh nay khi can random so phan tu trong mang
+	NhapN(n);
+	NhapMang(a, n);
+	XuatMang(a, n);
+
+	/*int x;
+	printf("\nNhap so can them vao cuoi mang: ");
+	scanf("%d", &x);
+	printf("\nMang moi: \n");
+	ThemCuoi(a, n, x);
+	XuatMang(a, n);
+
+	int y;
+	printf("\nNhap so can them vao dau mang: ");
+	scanf("%d", &y);
+	printf("\nMang moi: \n");
+	ThemDau(a, n, y);
+	XuatMang(a, n);*/
+
+	/*printf("\nMang sau khi xoa cuoi: \n");
+	XoaCuoi(a, n);
+	XuatMang(a, n);*/
+
+	/*printf("\nMang sau khi xoa dau: \n");
+	XoaDau(a, n);
+	XuatMang(a, n);*/
+
+	/*int z, t;
+	printf("\nNhap vi tri muon them: ");
+	scanf("%d", &z);
+	printf("Nhap so muon them: ");
+	scanf("%d", &t);
+	printf("\nMang moi: \n");
+	ThemBatKy(a, n, z, t);
+	XuatMang(a, n);*/
+
+	int b;
+	printf("\nNhap vi tri muon xoa: ");
+	scanf("%d", &b);
+	printf("\nMang moi: \n");
+	XoaBatKy(a, n, b);
+	XuatMang(a, n);
+}
